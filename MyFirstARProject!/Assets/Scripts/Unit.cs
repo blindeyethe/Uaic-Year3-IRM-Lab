@@ -5,25 +5,37 @@ namespace IRM
     internal sealed class Unit : MonoBehaviour
     {
         [SerializeField] private float detectionRadius = 5f;
+        [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private LayerMask enemyLayerMask;
         
         private readonly Collider[] _hits = new Collider[5];
+        private float _attackTimer;
         
         private Transform _transform;
         private IAttacker _attacker;
+        private Animator _animator;
 
         private void Awake()
         {
             _transform = transform;
+            _animator = GetComponent<Animator>();
             _attacker = GetComponent<IAttacker>();
+            _attackTimer = 0f;
         }
             
         private void Update()
         {
+            _attackTimer += Time.deltaTime;
+            if (_attackTimer <= attackCooldown)
+                return;
+            
+            _attackTimer = 0f;
+            
             var closestEnemy = GetClosestEnemy();
             if (closestEnemy == null)
                 return;
-
+            
+            //_animator.SetTrigger();
             _attacker.DoDamage(closestEnemy.transform);
         }
 
