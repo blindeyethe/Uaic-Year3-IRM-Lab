@@ -10,10 +10,13 @@ namespace IRM
         private readonly Collider[] _hits = new Collider[5];
         
         private Transform _transform;
-        private IDamageable _damageable;
-        
-        private void Awake() =>
+        private IAttacker _attacker;
+
+        private void Awake()
+        {
             _transform = transform;
+            _attacker = GetComponent<IAttacker>();
+        }
             
         private void Update()
         {
@@ -21,7 +24,7 @@ namespace IRM
             if (closestEnemy == null)
                 return;
 
-            _damageable.DoDamage(closestEnemy.transform);
+            _attacker.DoDamage(closestEnemy.transform);
         }
 
         private Collider GetClosestEnemy()
