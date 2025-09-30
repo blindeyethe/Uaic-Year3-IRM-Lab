@@ -4,6 +4,8 @@ namespace IRM
 {
     internal sealed class Unit : MonoBehaviour
     {
+        private static readonly int Attack = Animator.StringToHash("Attack");
+        
         [SerializeField] private float detectionRadius = 5f;
         [SerializeField] private float attackCooldown = 2f;
         [SerializeField] private LayerMask enemyLayerMask;
@@ -20,7 +22,8 @@ namespace IRM
             _transform = transform;
             _animator = GetComponent<Animator>();
             _attacker = GetComponent<IAttacker>();
-            _attackTimer = 0f;
+            
+            _attackTimer = attackCooldown;
         }
             
         private void Update()
@@ -35,8 +38,8 @@ namespace IRM
             if (closestEnemy == null)
                 return;
             
-            //_animator.SetTrigger();
-            _attacker.DoDamage(closestEnemy.transform);
+            _animator.SetTrigger(Attack);
+            _attacker.DoDamage(_transform.position, closestEnemy.transform);
         }
 
         private Collider GetClosestEnemy()

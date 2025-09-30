@@ -4,6 +4,6 @@ namespace IRM
 {
     public interface IAttacker
     {
-        void DoDamage(Transform target);
+        void DoDamage(Vector3 attackerPosition, Transform target);
     }
 }
