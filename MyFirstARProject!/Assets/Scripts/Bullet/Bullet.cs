@@ -24,7 +24,7 @@ namespace IRM
             if (!other.TryGetComponent<IDamageable>(out var damageable))
                 damageable.TakeDamage();
             
-            Return(this);
+            Pool.Release(this);
         }
     }
 }

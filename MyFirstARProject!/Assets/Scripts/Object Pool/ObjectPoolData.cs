@@ -22,6 +22,9 @@ namespace TheBlindEye.ObjectPoolSystem
             
             return poolObject;
         }
+        
+        public void Release(T  poolObject) =>
+            _objectPool.Release(poolObject);
 
         private T OnPoolCreate()
         {
