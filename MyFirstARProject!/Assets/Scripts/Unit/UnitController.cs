@@ -54,8 +54,11 @@ namespace IRM
         {
             var direction = (targetPosition - _transform.position).normalized;
             direction.y = 0f;
-            
-            var targetRotation = Quaternion.LookRotation(direction);
+
+            if (direction.sqrMagnitude <= 0f)
+                return;
+
+            var targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, ROTATION_SPEED * Time.deltaTime);
         }
 
