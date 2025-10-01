@@ -2,12 +2,14 @@ using UnityEngine;
 
 namespace IRM
 {
-    internal sealed class Unit : MonoBehaviour
+    internal sealed class UnitController : MonoBehaviour
     {
+        private const float ROTATION_SPEED = 5f;
         private static readonly int Attack = Animator.StringToHash("Attack");
         
         [SerializeField] private float detectionRadius = 5f;
         [SerializeField] private float attackCooldown = 2f;
+        
         [SerializeField] private LayerMask enemyLayerMask;
         
         private readonly Collider[] _hits = new Collider[5];
@@ -28,18 +30,33 @@ namespace IRM
             
         private void Update()
         {
+            var closestEnemy = GetClosestEnemy();
+            if (closestEnemy == null)
+            {
+                _attackTimer = attackCooldown;
+                return;
+            }
+            
+            var targetTransform = closestEnemy.transform;
+            RotateTowards(targetTransform.position);
+            
             _attackTimer += Time.deltaTime;
             if (_attackTimer <= attackCooldown)
                 return;
             
             _attackTimer = 0f;
             
-            var closestEnemy = GetClosestEnemy();
-            if (closestEnemy == null)
-                return;
-            
             _animator.SetTrigger(Attack);
-            _attacker.DoDamage(_transform.position, closestEnemy.transform);
+            _attacker.DoDamage(_transform.position, targetTransform);
+        }
+        
+        private void RotateTowards(Vector3 targetPosition)
+        {
+            var direction = (targetPosition - _transform.position).normalized;
+            direction.y = 0f;
+            
+            var targetRotation = Quaternion.LookRotation(direction);
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, ROTATION_SPEED * Time.deltaTime);
         }
 
         private Collider GetClosestEnemy()

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca1965be9e346f086274a22e1041e11, type: 3}
+  m_Name: Bullet ObjectPool
+  m_EditorClassIdentifier: 
+  poolingObject: {fileID: 1659646161428627787, guid: 19db6c1b1e619f84bb69064e90390880, type: 3}
+  defaultCapacity: 10
