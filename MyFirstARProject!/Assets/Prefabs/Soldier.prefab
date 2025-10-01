@@ -222,8 +222,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6332266, y: 1.6168454, z: 1}
-  m_Center: {x: -0.005557138, y: 0.7884228, z: 0}
+  m_Size: {x: 0.08065897, y: 0.16508883, z: 0.082177006}
+  m_Center: {x: 0.0022459924, y: 0.080749676, z: 0.0062576346}
 --- !u!54 &1128791319029681421
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202f44479f6342a4abaf05518ad52410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   hitParticles: {fileID: 4516098353209720634}
 --- !u!114 &1579052585198435455
 MonoBehaviour:
@@ -950,7 +951,7 @@ Transform:
   m_GameObject: {fileID: 6296815805621131557}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.282, y: 0.734, z: 0.98}
+  m_LocalPosition: {x: 0.0309, y: 0.0775, z: 0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1333,6 +1334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1440063030136818390, guid: 5cf482a6e00bd2942afb5136cf3ab77a, type: 3}
+      propertyPath: unitHealth
+      value: 
+      objectReference: {fileID: 1733050287712334759}
     - target: {fileID: 2796405898874054410, guid: 5cf482a6e00bd2942afb5136cf3ab77a, type: 3}
       propertyPath: m_Name
       value: World Canvas
@@ -1381,11 +1386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4448219369109366, guid: 6c86c599d7bf3464eb4506d2584fbe57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.058
+      value: -0.009
       objectReference: {fileID: 0}
     - target: {fileID: 4448219369109366, guid: 6c86c599d7bf3464eb4506d2584fbe57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.226
+      value: 0.167
       objectReference: {fileID: 0}
     - target: {fileID: 4448219369109366, guid: 6c86c599d7bf3464eb4506d2584fbe57, type: 3}
       propertyPath: m_LocalPosition.z

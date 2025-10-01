@@ -9,13 +9,15 @@ namespace IRM
         private const int DAMAGE = 2;
         private static readonly WaitForSeconds WAIT = new(0.2f);
 
-        public static event Action<int> OnDamage; 
+        public event Action<int> OnDamage; 
         
         [SerializeField] private int maxHealth = 100;
         [SerializeField] private ParticleSystem hitParticles;
         
         private int _currentHealth;
         private SkinnedMeshRenderer _skinnedMeshRenderer;
+        
+        public int MaxHealth => maxHealth;
 
         private void Awake()
         {
