@@ -1,4 +1,7 @@
+# Tema 3
+In folderul Tema 2
 
+Bonus: Grab, Drop and Trigger Animations
 
 # Tema 2
 Bonus: hit particles, dart trail, target hit animation, throw charge, score is also multiplied by how close the dart is to the center
